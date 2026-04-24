@@ -3,6 +3,8 @@
 -- The above pragma enables all warnings
 module Task1 where
 
+import Data.List (unfoldr)
+
 -- | Returns infinite list of natural numbers (excluding zero)
 --
 -- First 10 natural numbers:
@@ -10,7 +12,7 @@ module Task1 where
 -- >>> take 10 nats
 -- [1,2,3,4,5,6,7,8,9,10]
 nats :: [Integer]
-nats = error "TODO: define nats (Task1)"
+nats = unfoldr (Just . \n -> (n, succ n)) 1
 
 -- | Returns infinite list of fibonacci numbers (starting with zero)
 --
@@ -19,7 +21,9 @@ nats = error "TODO: define nats (Task1)"
 -- >>> take 10 fibs
 -- [0,1,1,2,3,5,8,13,21,34]
 fibs :: [Integer]
-fibs = error "TODO: define fibs (Task1)"
+fibs = unfoldr (Just . step) (0, 1)
+  where
+    step (a, b) = (a, (b, a + b))
 
 -- | Returns infinite list of prime numbers
 --
@@ -28,7 +32,7 @@ fibs = error "TODO: define fibs (Task1)"
 -- >>> take 10 primes
 -- [2,3,5,7,11,13,17,19,23,29]
 primes :: [Integer]
-primes = error "TODO: define primes (Task1)"
+primes = unfoldr sieve [2 ..]
 
 -- | One step of Sieve of Eratosthenes
 -- (to be used with 'unfoldr')
@@ -44,4 +48,5 @@ primes = error "TODO: define primes (Task1)"
 -- >>> sieve [3,5..20]
 -- Just (3,[5,7,11,13,17,19])
 sieve :: [Integer] -> Maybe (Integer, [Integer])
-sieve = error "TODO: define sieve (Task1)"
+sieve [] = Nothing
+sieve (p : xs) = Just (p, filter (\x -> x `rem` p /= 0) xs)
