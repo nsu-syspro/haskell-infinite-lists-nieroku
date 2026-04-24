@@ -1,4 +1,5 @@
 {-# OPTIONS_GHC -Wall #-}
+
 -- The above pragma enables all warnings
 
 module Task2 where
@@ -20,7 +21,6 @@ instance Foldable Stream where
 -- [1,2,3,0,0,0,0,0,0,0]
 -- >>> fromList undefined [1..]
 -- [1,2,3,4,5,6,7,8,9,10]
---
 fromList :: a -> [a] -> Stream a
 fromList = error "TODO: define fromList"
 
@@ -34,7 +34,6 @@ fromList = error "TODO: define fromList"
 -- [5,4,3,2,1,0,-1,-2,-3,-4]
 -- >>> unfold (\x -> (abs x, x-1)) 5
 -- [5,4,3,2,1,0,1,2,3,4]
---
 unfold :: (b -> (a, b)) -> b -> Stream a
 unfold = error "TODO: define unfold"
 
@@ -44,7 +43,6 @@ unfold = error "TODO: define unfold"
 --
 -- >>> nats
 -- [1,2,3,4,5,6,7,8,9,10]
---
 nats :: Stream Integer
 nats = error "TODO: define nats (Task2)"
 
@@ -54,7 +52,6 @@ nats = error "TODO: define nats (Task2)"
 --
 -- >>> fibs
 -- [0,1,1,2,3,5,8,13,21,34]
---
 fibs :: Stream Integer
 fibs = error "TODO: define fibs (Task2)"
 
@@ -64,7 +61,6 @@ fibs = error "TODO: define fibs (Task2)"
 --
 -- >>> primes
 -- [2,3,5,7,11,13,17,19,23,29]
---
 primes :: Stream Integer
 primes = error "TODO: define primes (Task2)"
 
@@ -81,6 +77,5 @@ primes = error "TODO: define primes (Task2)"
 -- (2,[3,5,7,9,11,13,15,17,19,21])
 -- >>> sieve $ snd $ sieve $ fromList 0 [2..]
 -- (3,[5,7,11,13,17,19,23,25,29,31])
---
 sieve :: Stream Integer -> (Integer, Stream Integer)
 sieve = error "TODO: define sieve (Task2)"
